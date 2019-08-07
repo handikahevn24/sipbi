@@ -131,16 +131,16 @@ include '../config/db.php';
           </div>
 
             <!-- The Modal -->
-            <!-- <div class="modal" id="tambahpembelian">
+            <div class="modal" id="tambahbarang">
             <div class="modal-dialog">
                 <div class="modal-content">
 
-                <!-- Modal Header 
+                <!-- Modal Header -->
                 <div class="modal-header">
                     <h4 class="modal-title">Data Pembelian</h4>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-                <!-- Modal body 
+                <!-- Modal body -->
                 <div class="modal-body">
                 <form action="tambahpembelian.php"class="form-pembelian" method="POST" id="form-pembelian">
                     <div class="form-group">
@@ -191,7 +191,7 @@ include '../config/db.php';
                     </div>
                 </div>
 
-                <!-- Modal footer 
+                <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-block btn-primary" value="simpan" name="simpan" id="simpan">Simpan</button>                    
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -199,7 +199,7 @@ include '../config/db.php';
 
                 </div>
             </div>
-            </div> -->
+            </div> 
             <div class="modal" id="detailpembelian">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -268,9 +268,9 @@ $(document).ready(function() {
             {
                 text: 'Tambah',
                 action: function ( e, dt, node, config ) {
-                    $("#detailpembelian").modal()
+                    $("#tambahbarang").modal()
                 }
-            }, 'copy', 'excel','print'
+            },
         ]
     } );
 

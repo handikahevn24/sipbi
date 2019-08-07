@@ -13,7 +13,7 @@ include '../config/db.php';
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">        
+        <link rel="stylesheet" href="../css/bootstrap.min.css">        
         <link rel="stylesheet" type="text/css" href="../datatables/datatables.min.css"/>
         <link href="../css/custom.css" rel="stylesheet">
     </head>
@@ -168,23 +168,9 @@ include '../config/db.php';
         </main>
       </div>
     </div>
-        <!-- jQuery library -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-        <!-- Popper JS -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-
-        <!-- Latest compiled JavaScript -->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>        
-
-        <!-- Icons -->
-        <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-        <script>
-          feather.replace()
-        </script>    
-        <!-- Graphs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="../datatables/datatables.min.js"></script>
+    <?php
+    include"js.php";
+    ?>
     <script type="text/javascript">
 $(document).ready(function() {
     $('#supplier').DataTable( {

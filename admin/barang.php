@@ -223,7 +223,7 @@ include '../config/db.php';
             </div>
 
         </main>
-      </div>
+      </div> 
     </div>
         <!-- jQuery library -->
         <script src="../js/jquery-3.3.1.min.js"></script>

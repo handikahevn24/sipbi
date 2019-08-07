@@ -229,6 +229,10 @@ include '../config/db.php';
                                 ?>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for="tanggal_pembelian">Tanggal Pembelian:</label>
+                        <input type="date" class="form-control" id="tanggal_pembelian" name="tanggal_pembelian">
+                    </div>
                 </div>
 
                 <!-- Modal footer -->

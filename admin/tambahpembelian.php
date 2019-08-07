@@ -10,7 +10,7 @@ if (isset($_POST['simpan'])) {
     $harga_satuan = $_POST['harga_satuan'];
     $harga_total = $_POST['harga_total'];
     
-    $sql = "INSERT INTO pembelian (no_faktur, kode_supplier, kode_barang, tanggal_pembelian, jumlah_barang, harga_satuan, harga_total)
+    $sql = "INSERT INTO detailpembelian (no_faktur, kode_supplier, kode_barang, tanggal_pembelian, jumlah_barang, harga_satuan, harga_total)
     VALUES ('$no_faktur', '$supplier', '$barang','$tanggal_pembelian', '$jumlah_barang', '$harga_satuan','$harga_total')";
 
     if ($con->query($sql) === TRUE) {

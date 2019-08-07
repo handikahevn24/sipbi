@@ -88,16 +88,21 @@ include '../config/db.php';
           <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
             <h1 class="h2">Pembelian</h1>
           </div>
-          <h2>Data Pembelian</h2>
+          <?php
+          $kode_supplier = $_GET['supplier'];
+          $supplier1 = "SELECT * FROM supplier where kode_supplier='$kode_supplier'";
+          $result = $con->query($supplier1);
+          $data_sup = $result->fetch_assoc();
+          ?>
+          <h4>Data Pembelian <?= $_GET['no_faktur'];?></h4>
+          <h4>Supplier : <?= $data_sup['nama_supplier'];?></h4>
+          <h5>Tanggal : <?= $_GET['tanggal_pembelian'];?></h5>
           <div class="table-responsive">
             <table id="pembelian" class="table table-striped table-sm">
               <thead>
                 <tr>
                   <th>No</th>
-                  <th>No Faktur</th>
-                  <th>Kode Supplier</th>
                   <th>Kode Barang</th>
-                  <th>Tanggal Pembelian</th>
                   <th>jumlah_barang</th>
                   <th>harga_satuan</th>
                   <th>harga_total</th>
@@ -107,16 +112,13 @@ include '../config/db.php';
               <tbody>
               <?php
               $no = 1;
-                    $sql = "SELECT * From pembelian";
+                    $sql = "SELECT * From detailpembelian";
                     if ($result = $con->query($sql)){
                         while($data = $result->fetch_assoc()){
                           ?>
                           <tr>
                             <td><?= $no++; ?></td>
-                            <td><?= $data['no_faktur'];?></td>
-                            <td><?= $data['kode_supplier'];?></td>
                             <td><?= $data['kode_barang'];?></td>
-                            <td><?= $data['tanggal_pembelian'];?></td>
                             <td><?= $data['jumlah_barang'];?></td>
                             <td><?= $data['harga_satuan'];?></td>
                             <td><?= $data['harga_total'];?></td>
@@ -142,26 +144,9 @@ include '../config/db.php';
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body">
-                <form action="tambahpembelian.php"class="form-pembelian" method="POST" id="form-pembelian">
+                <form action="tambahdetailpembelian.php"class="form-pembelian" method="POST" id="form-pembelian">
                     <div class="form-group">
-                        <label for="no_Faktur">No Faktur:</label>
-                        <input type="text" class="form-control" id="no_faktur" name="no_faktur">
-                    </div>
-                    <div class="form-group">
-                        <label for="supplier">Kode Supplier:</label>
-                        <select name="supplier" class="form-control show-tick" data-live-search="true">
-                            <option> ---- Pilih Salah Satu ---- </option>
-                                <?php
-                                    $supplier = mysqli_query($con,"SELECT * FROM supplier ORDER BY kode_supplier ASC");
-                                    if(mysqli_num_rows($supplier) != 0){
-                                    while($dataku = mysqli_fetch_assoc($supplier)){
-                                    echo '<option value='.$dataku['kode_supplier'].'>'.$dataku['kode_supplier'].' | '.$dataku['nama_supplier'].'</option>'; }
-                                    }
-                                ?>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="kode_barang">Kode Barang</label>
+                        <label for="supplier">Barang:</label>
                         <select name="barang" class="form-control show-tick" data-live-search="true">
                             <option> ---- Pilih Salah Satu ---- </option>
                                 <?php
@@ -172,10 +157,6 @@ include '../config/db.php';
                                     }
                                 ?>
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="tanggal_pembelian">Tanggal Pembelian:</label>
-                        <input type="date" class="form-control" id="tanggal_pembelian" name="tanggal_pembelian">
                     </div>
                     <div class="form-group">
                         <label for="jumlah_barang">Jumlah Barang:</label>
@@ -247,10 +228,10 @@ include '../config/db.php';
     <script type="text/javascript">
 $(document).ready(function() {
     $('#pembelian').DataTable( {
-        dom: 'lBfrtip',
+        dom: 'Brtip',
         buttons: [ 
             {
-                text: 'Tambah',
+                text: 'Tambah Barang',
                 action: function ( e, dt, node, config ) {
                     $("#tambahbarang").modal()
                 }

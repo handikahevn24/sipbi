@@ -70,12 +70,6 @@ include '../config/db.php';
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="laporan.php">
-                  <span data-feather="bar-chart-2"></span>
-                  Laporan
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="pengaturanuser.php">
                   <span data-feather="settings"></span>
                   Pengaturan User
@@ -96,10 +90,8 @@ include '../config/db.php';
                   <th>No</th>
                   <th>No Faktur</th>
                   <th>Kode Supplier</th>
-                  <th>Kode Barang</th>
                   <th>Tanggal Pembelian</th>
                   <th>jumlah_barang</th>
-                  <th>harga_satuan</th>
                   <th>harga_total</th>
                   <th>Aksi</th>
                 </tr>
@@ -107,7 +99,7 @@ include '../config/db.php';
               <tbody>
               <?php
               $no = 1;
-                    $sql = "SELECT * From pembelian";
+                    $sql = "SELECT *, sum(jumlah_barang) as jumlah, sum(harga_total) as total From pembelian group by no_faktur";
                     if ($result = $con->query($sql)){
                         while($data = $result->fetch_assoc()){
                           ?>
@@ -115,12 +107,10 @@ include '../config/db.php';
                             <td><?= $no++; ?></td>
                             <td><?= $data['no_faktur'];?></td>
                             <td><?= $data['kode_supplier'];?></td>
-                            <td><?= $data['kode_barang'];?></td>
                             <td><?= $data['tanggal_pembelian'];?></td>
-                            <td><?= $data['jumlah_barang'];?></td>
-                            <td><?= $data['harga_satuan'];?></td>
-                            <td><?= $data['harga_total'];?></td>
-                            <td><a href="editpembelian.php?no_faktur=<?=$data['no_faktur'];?>"><span data-feather="edit"></span></a> | <a href="hapuspembelian.php?no_faktur=<?=$data['no_faktur'];?>"><span data-feather="trash"></span></a></td>
+                            <td><?= $data['jumlah'];?></td>
+                            <td><?= $data['total'];?></td>
+                            <td><a href="detailpembelian.php?no_faktur=<?=$data['no_faktur'];?>&supplier=<?=$data['kode_supplier'];?>&tanggal_pembelian=<?=$data['tanggal_pembelian'];?>"><span data-feather="edit"></span></a> | <a href="hapuspembelian.php?no_faktur=<?=$data['no_faktur'];?>"><span data-feather="trash"></span></a></td>
                           </tr>
                           <?php
                         }

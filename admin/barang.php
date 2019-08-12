@@ -71,12 +71,6 @@ include '../config/db.php';
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="laporan.php">
-                  <span data-feather="bar-chart-2"></span>
-                  Laporan
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="pengaturanuser.php">
                   <span data-feather="settings"></span>
                   Pengaturan User

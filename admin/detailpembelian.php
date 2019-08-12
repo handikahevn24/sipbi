@@ -70,12 +70,6 @@ include '../config/db.php';
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="laporan.php">
-                  <span data-feather="bar-chart-2"></span>
-                  Laporan
-                </a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="pengaturanuser.php">
                   <span data-feather="settings"></span>
                   Pengaturan User
@@ -89,7 +83,9 @@ include '../config/db.php';
             <h1 class="h2">Pembelian</h1>
           </div>
           <?php
-          $kode_supplier = $_GET['supplier'];
+          $kode_supplier = mysqli_real_escape_string($con,$_GET['supplier']);
+          $no_faktur = mysqli_real_escape_string($con,$_GET['no_faktur']);
+          $tanggal_pembelian = mysqli_real_escape_string($con,$_GET['tanggal_pembelian']);
           $supplier1 = "SELECT * FROM supplier where kode_supplier='$kode_supplier'";
           $result = $con->query($supplier1);
           $data_sup = $result->fetch_assoc();
@@ -112,7 +108,7 @@ include '../config/db.php';
               <tbody>
               <?php
               $no = 1;
-                    $sql = "SELECT * From detailpembelian";
+                    $sql = "SELECT * From pembelian where no_faktur = '$no_faktur'";
                     if ($result = $con->query($sql)){
                         while($data = $result->fetch_assoc()){
                           ?>
@@ -122,7 +118,7 @@ include '../config/db.php';
                             <td><?= $data['jumlah_barang'];?></td>
                             <td><?= $data['harga_satuan'];?></td>
                             <td><?= $data['harga_total'];?></td>
-                            <td><a href="editpembelian.php?no_faktur=<?=$data['no_faktur'];?>"><span data-feather="edit"></span></a> | <a href="hapuspembelian.php?no_faktur=<?=$data['no_faktur'];?>"><span data-feather="trash"></span></a></td>
+                            <td><a href="editpembelian.php?no_faktur=<?=$data['no_faktur'];?>&kode_barang=<?=$data['kode_barang'];?>"><span data-feather="edit"></span></a> | <a href="hapuspembeliansatu.php?no_faktur=<?=$data['no_faktur'];?>&kode_barang=<?=$data['kode_barang'];?>"><span data-feather="trash"></span></a></td>
                           </tr>
                           <?php
                         }
@@ -144,7 +140,7 @@ include '../config/db.php';
                 </div>
                 <!-- Modal body -->
                 <div class="modal-body">
-                <form action="tambahdetailpembelian.php"class="form-pembelian" method="POST" id="form-pembelian">
+                <form action="tambahpembelian.php?no_faktur=<?=$no_faktur;?>&supplier=<?=$kode_supplier;?>&tanggal_pembelian=<?=$tanggal_pembelian;?>" class="form-pembelian" method="POST" id="form-pembelian">
                     <div class="form-group">
                         <label for="supplier">Barang:</label>
                         <select name="barang" class="form-control show-tick" data-live-search="true">

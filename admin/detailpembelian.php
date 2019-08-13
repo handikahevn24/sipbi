@@ -118,7 +118,7 @@ include '../config/db.php';
                             <td><?= $data['jumlah_barang'];?></td>
                             <td><?= $data['harga_satuan'];?></td>
                             <td><?= $data['harga_total'];?></td>
-                            <td><a href="editpembelian.php?no_faktur=<?=$data['no_faktur'];?>&kode_barang=<?=$data['kode_barang'];?>"><span data-feather="edit"></span></a> | <a href="hapuspembeliansatu.php?no_faktur=<?=$data['no_faktur'];?>&kode_barang=<?=$data['kode_barang'];?>"><span data-feather="trash"></span></a></td>
+                            <td><a href="editpembelian.php?no_faktur=<?=$data['no_faktur'];?>&kode_barang=<?=$data['kode_barang'];?>&tanggal_pembelian=<?=$tanggal_pembelian;?>&kode_supplier=<?=$kode_supplier;?>"><span data-feather="edit"></span></a> | <a href="hapuspembeliansatu.php?no_faktur=<?=$data['no_faktur'];?>&kode_barang=<?=$data['kode_barang'];?>"><span data-feather="trash"></span></a></td>
                           </tr>
                           <?php
                         }

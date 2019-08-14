@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['username'])){
+  header('location: ../index.php');
+}else {
 include '../config/db.php';
 ?>
 <!DOCTYPE html>
@@ -175,3 +179,4 @@ $(document).ready(function() {
     
     </body>
 </html>
+<?php } ?>

@@ -9,6 +9,7 @@
 
         <!-- Icons -->
         <script src="../js/feather.min.js"></script>
+        <script src="../js/my.min.js"></script>   
         <script>
           feather.replace()
         </script>    

@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['username'] = $_POST['username'];
 include "config/db.php";
 
 $username = $_POST['username'];

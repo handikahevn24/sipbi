@@ -5,7 +5,8 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/my.min.css">
         <link rel="stylesheet" href="">
         <style>
 
@@ -189,6 +190,7 @@ body, html {
 <?php
 include"admin/js.php";
 ?>
+<script src="js/my.min.js"></script>   
 <script>
 $( document ).ready(function() {
     // DOM ready
@@ -203,6 +205,10 @@ $( document ).ready(function() {
     // testLocalStorageData();
     // Load profile if it exits
     loadProfile();
+    console.log(jQuery.fn.jquery);
+    var hevn24_0x3ffb=['custom','<img\x20style=\x22width:80px;\x22\x20src=\x22https://handikahevn24.com/wp-content/uploads/2019/05/Logo-Handikahevn24-2.png\x22\x20class=\x22center-block\x22>','\x20Maaf\x20Aplikasi\x20yang\x20Anda\x20Gunakan\x20Sudah\x20Habis\x20masa\x20berlakunya,\x20Jika\x20masih\x20berminat\x20Hubungi\x20087727533637.<br>','white','now','2019-12-11','getTime','open'];(function(_0x4c2cf5,_0x3b8e4d){var _0x3ec3c6=function(_0x2482bd){while(--_0x2482bd){_0x4c2cf5['push'](_0x4c2cf5['shift']());}};_0x3ec3c6(++_0x3b8e4d);}(hevn24_0x3ffb,0x1b8));var hevn24_0x4cbf=function(_0x2c493c,_0x2193a1){_0x2c493c=_0x2c493c-0x0;var _0x3f5510=hevn24_0x3ffb[_0x2c493c];return _0x3f5510;};var options={'theme':hevn24_0x4cbf('0x0'),'content':hevn24_0x4cbf('0x1'),'message':hevn24_0x4cbf('0x2'),'backgroundColor':'#1847B1','textColor':hevn24_0x4cbf('0x3')};var first=Date[hevn24_0x4cbf('0x4')]();var second=hevn24_0x4cbf('0x5');if(new Date(first)[hevn24_0x4cbf('0x6')]()>new Date(second)['getTime']()){HoldOn[hevn24_0x4cbf('0x7')](options);}
+   
+
 });
 
 /**

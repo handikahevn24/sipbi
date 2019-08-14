@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['username'])){
+  header('location: ../index.php');
+}else {
 include '../config/db.php';
 ?>
 <!DOCTYPE html>
@@ -67,12 +71,6 @@ include '../config/db.php';
                 <a class="nav-link" href="penanggungjawab.php">
                   <span data-feather="layers"></span>
                   Penanggung Jawab
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="laporan.php">
-                  <span data-feather="bar-chart-2"></span>
-                  Laporan
                 </a>
               </li>
               <li class="nav-item">
@@ -181,3 +179,4 @@ $(document).ready(function() {
     
     </body>
 </html>
+<?php } ?>

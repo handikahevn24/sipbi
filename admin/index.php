@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION['username'])){
+  header('location: ../index.php');
+}else {
 include '../config/db.php';
 $sqlfaktur = "SELECT * FROM pembelian group by no_faktur";
 $rfaktur = $con->query($sqlfaktur);
@@ -165,3 +169,4 @@ $datakeadaan_barang = $rrusakringan->fetch_assoc();
     
     </body>
 </html>
+    <?php }?>

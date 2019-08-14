@@ -103,20 +103,19 @@ if (isset($_GET['kode_barang'])) {
               </thead>
               <tbody>
               <?php
-              $no = 1;
-                    $sql = "SELECT * From keadaan_barang";
-                    if ($result = $con->query($sql)){
-                        while($data = $result->fetch_assoc()){
-                          ?>
-                          <tr>
-                            <td><?= $no++; ?></td>
-                            <td><?= $data['kode_barang'];?></td>
-                            <td><?= $data['jumlah'];?></td>
-                            <td><?= $data['rusak_ringan'];?></td>
-                            <td><?= $data['rusak_berat'];?></td>
-                            <td><?= $data['hilang'];?></td>
-                            <td><a href="editkeadaanbarang.php?kode_barang=<?=$data['kode_barang'];?>"><span data-feather="edit"></span></a> | <a href="hapuskeadaanbarang.php?kode_barang=<?=$data['kode_barang'];?>"><span data-feather="trash"></span></a></td>
-                          </tr>
+             $no = 1;
+             $sql = "SELECT * From pembelian where no_faktur = '$no_faktur'";
+             if ($result = $con->query($sql)){
+                 while($data = $result->fetch_assoc()){
+                   ?>
+                   <tr>
+                     <td><?= $no++; ?></td>
+                     <td><?= $data['kode_barang'];?></td>
+                     <td><?= $data['jumlah_barang'];?></td>
+                     <td><?= $data['harga_satuan'];?></td>
+                     <td><?= $data['harga_total'];?></td>
+                     <td><a href="editpembelian.php?no_faktur=<?=$data['no_faktur'];?>&kode_barang=<?=$data['kode_barang'];?>&tanggal_pembelian=<?=$tanggal_pembelian;?>&kode_supplier=<?=$kode_supplier;?>"><span data-feather="edit"></span></a> | <a href="hapuspembeliansatu.php?no_faktur=<?=$data['no_faktur'];?>&kode_barang=<?=$data['kode_barang'];?>"><span data-feather="trash"></span></a></td>
+                   </tr>
                           <?php
                         }
                     }
